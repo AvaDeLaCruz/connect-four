@@ -1,3 +1,9 @@
+/* 
+* Connect 4
+* Ava DeLaCruz
+* September 15, 2019
+*/
+
 import java.util.Scanner;
 import java.util.HashMap; 
 
