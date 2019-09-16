@@ -6,7 +6,7 @@ public class ConnectFour {
     public static Scanner scan = new Scanner(System.in);
 	private static final int NUMROWS = 6;
 	private static final int NUMCOLS = 7;
-	private static char[][] board = new char[NUMROWS][NUMCOLS];
+	private static String[][] board = new String[NUMROWS][NUMCOLS];
 	private static HashMap<Integer, Integer> nextSlotMap = new HashMap<>();
 	private static int currentPlayer = 1;
 	
@@ -23,7 +23,7 @@ public class ConnectFour {
 	public static void initializeBoard() {
 		for(int r = 0; r<NUMROWS; r++) {
 			for(int c=0; c<NUMCOLS; c++) {
-				board[r][c] = '*';
+				board[r][c] = "*";
 			}
 		}
 	}
@@ -54,8 +54,10 @@ public class ConnectFour {
 	
 //	add a disk to the column the user chose
 	public static void makeMove(int col) {
+//		add current player number to board at pos [nextAvailableRow][col]
+		board[nextSlotMap.get(col)][col] = Integer.toString(currentPlayer);
+//		update next available slot to be the slot in the row above the current row
 		nextSlotMap.replace(col, nextSlotMap.get(col) - 1);
-		System.out.println(nextSlotMap);
 	}
 	
 //	get player's input col value and either make the move or print an error message
@@ -80,7 +82,7 @@ public class ConnectFour {
 		}
 	}
 
-	
+//	main logic to initiate and run game
 	public static void main(String[] args) {
 		initializeHashMap();
 		initializeBoard();
